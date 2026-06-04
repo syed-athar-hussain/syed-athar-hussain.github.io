@@ -151,14 +151,14 @@
 // }
 
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { HashRouter, Routes, Route, Link } from 'react-router-dom';
 import Home from './Home';
 import ProjectDetail from './ProjectDetail';
 import { Code, User, Mail } from 'lucide-react';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="min-h-screen flex flex-col font-sans">
         <nav className="fixed w-full bg-primary/90 backdrop-blur-md z-50 border-b border-slate-800">
           <div className="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
@@ -189,6 +189,6 @@ export default function App() {
           <p>© 2026 Engineered with React & Tailwind.</p>
         </footer>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
