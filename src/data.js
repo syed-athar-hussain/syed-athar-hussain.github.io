@@ -22,7 +22,7 @@ export const education = [
     details: "Key Modules: Advanced Machine Learning, Generative AI, Cloud Computing, Data Visualization, Big Data, Data Science."
   },
   {
-    degree: "BTech in Computer Science",
+    degree: "B.Tech in Computer Science",
     institution: "St. Mary’s Technical Campus",
     time: "Aug 2015 - Jul 2019",
     details: "Key Modules: Artificial Intelligence, Computer Networks, Data Management, Algorithm Design."
