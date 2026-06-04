@@ -16,7 +16,7 @@ export const profile = {
 
 export const education = [
   {
-    degree: "MSc in Computer Science",
+    degree: "MSc in Computer Science (CSNL)",
     institution: "University College Dublin",
     time: "Sep 2024 - Aug 2025",
     details: "Key Modules: Advanced Machine Learning, Generative AI, Cloud Computing, Data Visualization, Big Data, Data Science."
