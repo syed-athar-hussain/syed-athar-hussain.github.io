@@ -186,7 +186,7 @@ export default function App() {
             <User size={20} className="hover:text-accent cursor-pointer transition-colors" />
             <Mail size={20} className="hover:text-accent cursor-pointer transition-colors" />
           </div>
-          <p>© 2026 Engineered with React & Tailwind.</p>
+          <p>© 2026 Syed Athar Hussain</p>
         </footer>
       </div>
     </HashRouter>
