@@ -151,43 +151,76 @@
 // }
 
 import React from 'react';
-import { HashRouter, Routes, Route, Link } from 'react-router-dom';
+import { HashRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { Code, User, Mail, Database, BrainCircuit, Server } from 'lucide-react';
 import Home from './Home';
 import ProjectDetail from './ProjectDetail';
-import { Code, User, Mail } from 'lucide-react';
+
+// The new Gatekeeper Component
+function RoleGatekeeper() {
+  const navigate = useNavigate();
+
+  const roles = [
+    { id: 'backend', title: 'Backend / Java Engineer', icon: <Server size={32} /> },
+    { id: 'ml', title: 'Machine Learning Engineer', icon: <BrainCircuit size={32} /> },
+    { id: 'data', title: 'Data Scientist', icon: <Database size={32} /> }
+  ];
+
+  return (
+    <div className="min-h-screen bg-primary flex flex-col items-center justify-center px-6">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+        className="max-w-2xl w-full bg-slate-900 border border-slate-800 p-10 rounded-lg shadow-2xl"
+      >
+        <h1 className="text-3xl font-extrabold text-white text-center mb-2">Select Your Context</h1>
+        <p className="text-secondary text-center mb-8 font-mono text-sm">Initialize environment based on hiring requirements.</p>
+        
+        <div className="grid md:grid-cols-3 gap-4">
+          {roles.map(role => (
+            <button
+              key={role.id}
+              onClick={() => navigate(`/portfolio/${role.id}`)}
+              className="flex flex-col items-center gap-4 p-6 bg-slate-800 border border-slate-700 rounded hover:bg-slate-700 hover:border-accent transition-all group"
+            >
+              <div className="text-secondary group-hover:text-accent transition-colors">
+                {role.icon}
+              </div>
+              <span className="text-sm font-bold text-white text-center">{role.title}</span>
+            </button>
+          ))}
+        </div>
+      </motion.div>
+    </div>
+  );
+}
 
 export default function App() {
   return (
     <HashRouter>
-      <div className="min-h-screen flex flex-col font-sans">
-        <nav className="fixed w-full bg-primary/90 backdrop-blur-md z-50 border-b border-slate-800">
-          <div className="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
-            <Link to="/" className="text-xl font-bold text-light tracking-tight hover:text-accent transition-colors">
-              JD.
-            </Link>
-            <div className="hidden md:flex space-x-8 text-sm font-medium text-secondary">
-              <button onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-accent transition-colors">About</button>
-              <button onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-accent transition-colors">Experience</button>
-              <button onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-accent transition-colors">Projects</button>
-            </div>
-          </div>
-        </nav>
-
+      <div className="min-h-screen flex flex-col font-sans bg-primary text-light">
         <main className="flex-grow">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<RoleGatekeeper />} />
+            <Route path="/portfolio/:role" element={<Home />} />
             <Route path="/project/:id" element={<ProjectDetail />} />
           </Routes>
         </main>
-
-        <footer className="border-t border-slate-800 py-8 text-center text-secondary font-mono text-sm flex flex-col items-center">
-          <div className="flex space-x-6 mb-4">
-            <Code size={20} className="hover:text-accent cursor-pointer transition-colors" />
-            <User size={20} className="hover:text-accent cursor-pointer transition-colors" />
-            <Mail size={20} className="hover:text-accent cursor-pointer transition-colors" />
-          </div>
-          <p>© 2026 Syed Athar Hussain</p>
-        </footer>
+        
+        {/* Footer hidden on root, shown elsewhere */}
+        <Routes>
+          <Route path="/" element={null} />
+          <Route path="*" element={
+            <footer className="border-t border-slate-800 py-8 text-center text-secondary font-mono text-sm flex flex-col items-center">
+              <div className="flex space-x-6 mb-4">
+                <Code size={20} className="hover:text-accent cursor-pointer transition-colors" />
+                <User size={20} className="hover:text-accent cursor-pointer transition-colors" />
+                <Mail size={20} className="hover:text-accent cursor-pointer transition-colors" />
+              </div>
+              <p>© 2026 Engineered with React & Tailwind.</p>
+            </footer>
+          } />
+        </Routes>
       </div>
     </HashRouter>
   );
