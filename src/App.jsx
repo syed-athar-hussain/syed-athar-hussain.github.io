@@ -166,9 +166,9 @@ export default function App() {
               JD.
             </Link>
             <div className="hidden md:flex space-x-8 text-sm font-medium text-secondary">
-              <a href="/#about" className="hover:text-accent transition-colors">About</a>
-              <a href="/#experience" className="hover:text-accent transition-colors">Experience</a>
-              <a href="/#projects" className="hover:text-accent transition-colors">Projects</a>
+              <button onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-accent transition-colors">About</button>
+              <button onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-accent transition-colors">Experience</button>
+              <button onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-accent transition-colors">Projects</button>
             </div>
           </div>
         </nav>

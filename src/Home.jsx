@@ -81,9 +81,9 @@ export default function Home() {
             <button onClick={() => setResumeModalOpen(true)} className="flex items-center gap-2 bg-accent text-primary px-8 py-3 rounded text-sm font-bold hover:bg-white transition-colors">
               <Download size={16} /> Fetch Resume
             </button>
-            <a href="#projects" className="border border-slate-700 text-white px-8 py-3 rounded text-sm font-bold hover:bg-slate-800 transition-colors">
+            <button onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} className="border border-slate-700 text-white px-8 py-3 rounded text-sm font-bold hover:bg-slate-800 transition-colors">
               View Architecture
-            </a>
+            </button>
           </div>
         </motion.div>
       </section>
