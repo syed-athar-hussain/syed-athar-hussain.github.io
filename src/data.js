@@ -14,14 +14,14 @@ export const education = [
 ];
 
 export const roleData = {
-  backend: {
-    title: "Backend / Java Engineer.",
-    about: "Software Engineer specializing in distributed systems, event-driven architectures, and high-throughput microservices. I focus on Java, Spring Boot, and Apache Kafka. My production work centers on strict domain isolation, database query optimization, reducing IPC latency via gRPC, and removing single points of failure in cloud-native environments.",
+  fullstack: {
+    title: "Full-Stack Software Engineering.",
+    about: "Full-stack software engineer with 4 years of experience building responsive React applications and distributed Java Spring Boot services. Experienced in converting UX wireframes into maintainable UI components, managing asynchronous client state, and designing RESTful APIs backed by PostgreSQL and MySQL. Focused on secure, high-throughput systems deployed via Docker and Kubernetes.",
     skills: [
-      "Java 8/17/21, Spring Boot 3, Hibernate/JPA",
-      "PostgreSQL, Apache Cassandra, Redis",
-      "Apache Kafka, gRPC, REST, Protocol Buffers",
-      "Docker, Kubernetes, GitHub Actions, Prometheus"
+      "Frontend: React, TypeScript, HTML/CSS, Webpack, Vite, WebSockets",
+      "Backend: Java 8/17, Spring Boot, JPA, Hibernate, RESTful APIs",
+      "Database & DevOps: PostgreSQL, MySQL, Redis, Docker, Kubernetes, CI/CD",
+      "Architecture: DDD, Event-Driven, OWASP, JWT Auth"
     ],
     experience: [
       {
@@ -29,10 +29,10 @@ export const roleData = {
         company: "Fujitsu Consulting India, Pune",
         time: "Feb 2022 – Aug 2024",
         desc: [
-          "Decomposed monolithic applications into isolated microservices using Spring Boot and Domain-Driven Design principles.",
-          "Implemented asynchronous event architectures using Apache Kafka with acks=all to ensure zero message loss between services.",
-          "Optimized slow database transactions by rewriting JPA queries and introducing Redis LRU caching, dropping average p95 response times from 500ms to under 100ms.",
-          "Containerized services via Docker and managed CI/CD deployment pipelines on OpenShift/Kubernetes clusters."
+          "Built responsive user interfaces using React and TypeScript, connected to Java/Spring Boot backend services via REST APIs.",
+          "Migrated legacy monolithic Java services to an event-driven Spring Cloud distributed architecture on OpenShift, decreasing API response times from 500ms to under 100ms.",
+          "Deployed CI/CD pipelines via GitLab for Kubernetes clusters, achieving zero-downtime releases and shortening the release lifecycle by 40%.",
+          "Secured frontend and backend layers with strict data validation protocols to meet OWASP corporate security standards."
         ]
       },
       {
@@ -40,10 +40,9 @@ export const roleData = {
         company: "Avant-Grade Technologies, Kolkata",
         time: "Mar 2019 – Sep 2021",
         desc: [
-          "Built RESTful APIs in Java Spring Boot for an enterprise insurance platform.",
-          "Enforced logical data isolation by provisioning separate PostgreSQL schemas for distinct domain contexts.",
-          "Diagnosed and resolved database deadlocks by adding missing composite indexes, reducing query execution times by 75%.",
-          "Conducted daily code reviews focusing on concurrency issues and memory leaks."
+          "Built and deployed a full-stack web application from scratch using React, Webpack, and Java/J2EE.",
+          "Designed RESTful web services using Core Java and Spring Boot, mapping business logic to MySQL schemas via JPA and Hibernate.",
+          "Configured production monitoring, alerting, and centralized logging systems to assist in backend debugging and capacity planning."
         ]
       }
     ]
@@ -118,40 +117,69 @@ export const roleData = {
 
 export const projects = [
   {
-    id: "ai-ecommerce-platform",
-    title: "AI-Infused E-Commerce Platform",
-    category: "Java Projects",
-    roles: ['backend', 'ml'],
-    tech: ["Java", "Spring Boot", "Kafka", "PyTorch", "gRPC", "Kubernetes"],
-    summary: "Hybrid monorepo combining Java microservices, Django analytics, and Python ML/GenAI endpoints.",
+    id: "fullstack-ecommerce",
+    title: "Full-Stack E-Commerce Platform",
+    category: "Full Stack Projects",
+    roles: ['fullstack'],
+    tech: ["React", "TypeScript", "Java", "Spring Boot", "PostgreSQL", "Kubernetes"],
+    summary: "High-throughput React SPA backed by DDD-structured Spring Boot microservices.",
     details: [
-      "Requirements: Decompose a monolithic e-commerce backend into isolated domains. Integrate Python-based machine learning recommendations and an LLM support chatbot without impacting core transaction latency.",
-      "Architecture: Implemented Domain-Driven Design (DDD) to isolate User, Product, and Order contexts into separate Spring Boot 3 applications. Used PostgreSQL with a strict schema-per-service rule. Implemented a PyTorch neural collaborative filtering model and a RAG-based Llama-2 chatbot.",
-      "Challenges: Initial cross-stack communication over HTTP/REST caused 500ms latency spikes during JMeter load testing. Replaced the REST layer between Java and Python with gRPC and Protocol Buffers, cutting latency by 5x. Distributed transactions failed during partition testing; implemented a Saga pattern orchestrator in the Order service to handle multi-step rollbacks.",
-      "Deployment: Containerized all services. Managed orchestration with Kubernetes, setting node taints to isolate GPU workloads (AI inference) from CPU workloads (backend API routing).",
-      "Metrics: The system handled 10,000 req/min in simulations. The recommendation engine correlated with a 20% increase in cart additions in A/B testing."
+      "Requirements: Build a scalable full-stack platform supporting over 10,000 requests per minute with isolated data domains.",
+      "Frontend Architecture: Built reusable UI components in React and TypeScript. Managed asynchronous state and complex RESTful API payloads.",
+      "Backend Architecture: Implemented Domain-Driven Design (DDD) using Spring Boot. Decoupled backend services into independent bounded contexts using isolated PostgreSQL schemas.",
+      "Security: Integrated Spring Security and JWT authentication at the API gateway layer to ensure data confidentiality and comply with internal security policies.",
+      "Deployment: Containerized all frontend and backend services using Docker. Orchestrated the stack via Kubernetes with Horizontal Pod Autoscaling (HPA), reducing idle infrastructure costs by 30%."
+    ]
+  },
+  {
+    id: "workflow-dashboard",
+    title: "Developer Workflow Dashboard",
+    category: "Full Stack Projects",
+    roles: ['fullstack'],
+    tech: ["React", "TypeScript", "WebSockets", "Vite", "Redis"],
+    summary: "Real-time SPA dashboard mapping complex system states via WebSockets.",
+    details: [
+      "Requirements: Build a responsive grid-layout Single Page Application (SPA) to render real-time event histories and workflow states.",
+      "Implementation: Initialized the frontend using React, Vite, and TypeScript. Wrote REST APIs for task initiation and established WebSocket connections for real-time frontend status updates.",
+      "Security: Secured backend webhook endpoints utilizing HMAC SHA-256 to calculate and verify request signatures, rejecting unauthorized payloads.",
+      "Deployment: Maintained version control via Git. Configured a continuous deployment (CD) pipeline to automate frontend component testing and static asset deployment."
+    ]
+  },
+  {
+    id: "insurance-management-core",
+    title: "Insurance Management System",
+    category: "Java Projects",
+    roles: ['fullstack'],
+    tech: ["Core Java", "Spring Boot", "MySQL", "Kafka", "OpenFeign"],
+    summary: "Microservices backend managing the end-to-end lifecycle of Users, Policies, and Claims.",
+    details: [
+      "Requirements: Develop a resilient backend platform for insurance operations adhering to strict financial data segregation regulations.",
+      "Data Architecture: Maintained logical data segregation by building separated MySQL schemas mapped via JPA/Hibernate.",
+      "Communication: Developed an inter-service validation mechanism combining synchronous HTTP calls via OpenFeign and asynchronous event streaming via Apache Kafka (configured with at-least-once semantics).",
+      "Resilience: Guarded against cascading network failures by applying circuit breakers and timeout patterns to all RESTful web services.",
+      "Observability: Configured full-fledged application monitoring and exposed health check endpoints using Spring Boot Actuator to facilitate backend troubleshooting."
     ]
   },
   {
     id: "agentic-github-reviewer",
     title: "Agentic Developer Workflow System",
     category: "ML Projects",
-    roles: ['backend', 'ml'],
+    roles: ['ml'],
     tech: ["FastAPI", "LangGraph", "Redis", "Claude 3.5 Sonnet", "FAISS"],
     summary: "Model Context Protocol (MCP) system orchestrating LLMs to automate code review via GitHub webhooks.",
     details: [
-      "Requirements: Build a webhook-triggered system to read GitHub Pull Request diffs, fetch relevant repository context, and post inline syntax corrections without exceeding LLM token limits.",
-      "Architecture: Built a FastAPI backend acting as an MCP server, using Redis for shared memory across agent steps. Used LangGraph to define a cyclic state machine for query routing. Bound GitHub API utility functions to Claude 3.5 Sonnet using LangChain tool decorators.",
-      "Challenges: Injecting full repository structures into the LLM prompt caused 'lost-in-the-middle' hallucinations and high token costs. Solved this by building a FAISS vector database pipeline; the system chunks repo files and retrieves only the top 3 mathematical nearest-neighbor code blocks based on the PR diff. LangGraph agents initially entered infinite tool-calling loops; resolved by enforcing strict JSON schema validation on tool outputs and hard-capping execution edges.",
-      "Security & Deployment: Configured event-driven triggers via GitHub Webhooks. Dropped unauthorized network requests by hashing payloads and comparing them against the X-Hub-Signature-256 header.",
-      "Metrics: Decreased API token consumption by 60% compared to full-context loading. Automated review feedback posts within 5 seconds of PR creation."
+      "Requirements: Build an event-driven bot that reads GitHub pull request diffs, fetches relevant repo code chunks, and posts precise inline review suggestions without exceeding token limits.",
+      "Implementation: Built a FastAPI backend implementing Anthropic's Model Context Protocol (MCP) with Redis shared memory. Created a stateful agent graph in LangGraph to route queries based on task complexity.",
+      "Technical Challenges: Passing full repositories into prompt context led to hallucinations and blown token limits. Integrated a FAISS vector database to chunk and retrieve only the top 3 nearest-neighbor code files relevant to the diff. Fixed infinite tool loops in LangGraph by adding strict JSON output validation and capping maximum iteration steps.",
+      "Deployment: Deployed on AWS with GitHub webhook triggers protected by HMAC SHA-256 signature verification.",
+      "Metrics: Cut token consumption by 60% compared to full-context injection and posted automated review feedback within 5 seconds of PR creation."
     ]
   },
   {
     id: "stock-options-pipeline",
     title: "US Stock Options Data Pipeline & Forecasting",
     category: "Data Science",
-    roles: ['data', 'ml', 'backend'],
+    roles: ['data', 'ml'],
     tech: ["Python", "PyTorch", "Airflow", "Kafka", "Azure SQL"],
     summary: "High-concurrency data pipeline and Transformer-LSTM model for predicting stock log returns.",
     details: [
@@ -166,7 +194,7 @@ export const projects = [
     id: "error-categorization",
     title: "Error Categorization & Root-Cause Analysis",
     category: "ML Projects",
-    roles: ['ml', 'backend'],
+    roles: ['ml'],
     tech: ["Python", "PyTorch", "Hugging Face", "Pandas", "Django"],
     summary: "Offline, deterministic NLP pipeline replacing third-party LLM APIs for classifying bug reports.",
     details: [
@@ -175,21 +203,6 @@ export const projects = [
       "Model Engineering: Fine-tuned the 'bert-base-multilingual-uncased' model via Hugging Face. Bug reports frequently fit into multiple categories, making standard softmax activation fail. Replaced softmax with a BCEWithLogitsLoss function and applied a 0.5 sigmoid threshold to support multi-label classification. Kept inference fast by hard-capping the tokenizer max_length to 128 tokens.",
       "Deployment: Embedded the PyTorch inference engine within a Django web application served via Gunicorn. Used Openpyxl to export results to Excel, explicitly writing code to preserve legacy VBA macros required by the client.",
       "Metrics: Eliminated OpenAI API dependencies, reducing API operational costs to zero. Processed Japanese and English text natively without translation layers."
-    ]
-  },
-  {
-    id: "insurance-management",
-    title: "Distributed Insurance Management System",
-    category: "Java Projects",
-    roles: ['backend'],
-    tech: ["Java 17", "Spring Boot 3", "PostgreSQL", "Kafka"],
-    summary: "Stateless microservices architecture handling policy and claim lifecycles.",
-    details: [
-      "Requirements: Design a highly available backend to process user registration, policy generation, and insurance claims while maintaining strict data compliance.",
-      "Architecture: Built three distinct Spring Boot microservices (User, Policy, Claim). Handled immediate read queries via synchronous Feign clients and distributed state changes via asynchronous Kafka event publishing.",
-      "Challenges: Financial regulatory requirements mandated strict data isolation. Configured Hibernate to enforce separate PostgreSQL schemas for each microservice, blocking cross-domain database queries at the ORM level. To prevent data corruption during network partitions, configured Kafka producer acks=all and implemented consumer idempotency.",
-      "Deployment: Defined a docker-compose.yml to orchestrate the application JARs alongside Zookeeper, Kafka brokers, and the PostgreSQL instance. Exposed Spring Boot Actuator endpoints for Prometheus metric scraping.",
-      "Metrics: Ensured 100% logical data isolation, allowing individual domains (e.g., Claims) to scale horizontally under load without locking Policy tables."
     ]
   },
   {
@@ -205,36 +218,6 @@ export const projects = [
       "Model Engineering: Trained a multi-class XGBoost classifier configured with 'multi:softprob'. Handled inherent class imbalances using stratified train/test splits and applied StandardScaler to normalize feature weights.",
       "Interpretability: Integrated SHAP (SHapley Additive exPlanations) using TreeExplainer. Generated beeswarm and waterfall plots to map feature impact distributions. Identified that synthetic audio exhibited an identifiable, unnaturally low standard deviation in higher MFCC coefficients.",
       "Metrics: Achieved 94%+ classification accuracy on test samples, providing transparent diagnostic explanations for audio forensics."
-    ]
-  },
-  {
-    id: "user-management-cassandra",
-    title: "High-Throughput User Management Service",
-    category: "Java Projects",
-    roles: ['backend'],
-    tech: ["Java", "Spring Boot", "Cassandra", "Redis", "Kafka"],
-    summary: "Low-latency REST microservice using Cassandra for persistent storage and Redis for caching.",
-    details: [
-      "Requirements: Develop a high-throughput user activity logging and management service capable of single-digit millisecond lookup times.",
-      "Architecture: Built a Spring Boot application using Spring Data Cassandra for wide-column persistence and Lettuce for Redis caching. Published structured user activity payloads to Kafka topics using a custom producer.",
-      "Challenges: High read volume caused unnecessary database loads and latency. Implemented a cache-aside pattern in Redis with a 3-minute TTL, falling back to Cassandra only on cache misses. Integrated Logback rolling file appenders with strict size-based policies to prevent local disk exhaustion during high-volume auditing.",
-      "Deployment: Containerized the stack with Docker Compose and documented REST endpoints using OpenAPI (Swagger UI).",
-      "Metrics: Reduced user profile lookup latency to <10ms for cached records while continuously streaming audit events to Kafka."
-    ]
-  },
-  {
-    id: "carracing-ppo-rl",
-    title: "Autonomous Car Control via PPO",
-    category: "ML Projects",
-    roles: ['ml'],
-    tech: ["Python", "PyTorch", "Stable-Baselines3", "OpenAI Gym"],
-    summary: "Vision-based continuous control autonomous racing agent trained via Proximal Policy Optimization (PPO).",
-    details: [
-      "Requirements: Train an RL agent to navigate a simulated racing track in OpenAI Gym (CarRacing-v3) directly from raw visual pixel observations.",
-      "Implementation: Used Stable-Baselines3 PPO with a Convolutional Neural Network (CNN) policy. Reduced raw RGB frames to 84x84 grayscale.",
-      "Challenges: Single-frame inputs suffered from severe partial observability (unable to determine car velocity or heading). Implemented VecFrameStack to concatenate 4 consecutive frames, providing implicit motion cues and stabilizing policy learning. Tuned hyperparameters (learning rate 3e-5, clip range 0.4, entropy coefficient 0.001) to prevent early policy collapse.",
-      "Deployment: Saved model checkpoints during 500,000 timestep training runs using EvalCallback and monitored actor/critic losses in TensorBoard.",
-      "Metrics: The 4-frame stacked PPO agent improved average evaluation episode reward from -61.56 (single-frame failure) to +154.19."
     ]
   },
   {
@@ -265,21 +248,6 @@ export const projects = [
       "Challenges: Irregular date formats and mismatched categorical values disrupted Looker Studio aggregations. Standardized strings with snake_case formatting and built calculated fields directly in Looker Studio (e.g., average bill per age bracket) to bypass frontend calculation limits.",
       "Deployment: Published an interactive Looker Studio dashboard featuring age sliders, admission type filters, blood type distribution charts, and hospital stay metrics.",
       "Metrics: Enabled clinical admins to dynamically filter and correlate medical conditions with length-of-stay metrics and billing costs across tens of thousands of records."
-    ]
-  },
-  {
-    id: "dublin-rental-market-analysis",
-    title: "Dublin Rental Market Scraper & EDA",
-    category: "Data Science",
-    roles: ['data'],
-    tech: ["Python", "BeautifulSoup", "Pandas", "Plotly", "Seaborn"],
-    summary: "Web scraper and exploratory data analysis pipeline evaluating housing prices across geographic districts.",
-    details: [
-      "Requirements: Scrape multi-page rental database listings across 4 quarterly archives, clean messy HTML table structures, and analyze rental pricing distributions.",
-      "Implementation: Wrote a BeautifulSoup scraper handling pagination logic, retry blocks, and field extraction mappings. Standardized pricing into numeric floats using regular expressions.",
-      "Challenges: Pagination HTML on quarter homepages contained duplicate page links and skipped initial page links. Fixed by parsing relative hrefs, dropping duplicates, and explicitly injecting initial page URLs. Handled missing <td> tags gracefully using try-except blocks to prevent scraper termination.",
-      "Analysis: Output structured datasets to CSV. Categorized locations into North vs. South Dublin based on postal district numbers. Generated EDA plots using Plotly Express and Seaborn (histograms with KDE, location price boxplots).",
-      "Metrics: Cleaned and structured 1,000+ raw HTML rental listings, revealing price clustering between €1,250–€1,750 and highlighting property type cost variances."
     ]
   }
 ];

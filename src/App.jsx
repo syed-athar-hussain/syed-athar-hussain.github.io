@@ -157,12 +157,11 @@ import { Code, User, Mail, Database, BrainCircuit, Server } from 'lucide-react';
 import Home from './Home';
 import ProjectDetail from './ProjectDetail';
 
-// The new Gatekeeper Component
 function RoleGatekeeper() {
   const navigate = useNavigate();
 
   const roles = [
-    { id: 'backend', title: 'Backend / Java Engineer', icon: <Server size={32} /> },
+    { id: 'fullstack', title: 'Full Stack Software Engineer', icon: <Server size={32} /> },
     { id: 'ml', title: 'Machine Learning Engineer', icon: <BrainCircuit size={32} /> },
     { id: 'data', title: 'Data Scientist', icon: <Database size={32} /> }
   ];
@@ -173,7 +172,7 @@ function RoleGatekeeper() {
         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
         className="max-w-2xl w-full bg-slate-900 border border-slate-800 p-10 rounded-lg shadow-2xl"
       >
-        <h1 className="text-3xl font-extrabold text-white text-center mb-2">Select Your Context</h1>
+        <h1 className="text-3xl font-extrabold text-white text-center mb-2">Select Context</h1>
         <p className="text-secondary text-center mb-8 font-mono text-sm">Initialize environment based on hiring requirements.</p>
         
         <div className="grid md:grid-cols-3 gap-4">
@@ -207,7 +206,6 @@ export default function App() {
           </Routes>
         </main>
         
-        {/* Footer hidden on root, shown elsewhere */}
         <Routes>
           <Route path="/" element={null} />
           <Route path="*" element={

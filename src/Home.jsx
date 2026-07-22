@@ -13,12 +13,17 @@ export default function Home() {
   const { role } = useParams();
   const [isResumeModalOpen, setResumeModalOpen] = useState(false);
 
-  // Fallback to 'backend' if an invalid role is entered in the URL manually
-  const currentRoleKey = roleData[role] ? role : 'backend';
+  const currentRoleKey = roleData[role] ? role : 'fullstack';
   const profile = roleData[currentRoleKey];
-  
-  // Filter projects based on whether the role array includes the current route
   const filteredProjects = projects.filter(p => p.roles.includes(currentRoleKey));
+
+  // Native DOM Scrolling avoids React Router Hash conflicts
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const handleDownload = (selectedRoleFormat) => {
     alert(`Initiating download for: ${selectedRoleFormat} Resume`);
@@ -27,7 +32,7 @@ export default function Home() {
 
   const handleContactSubmit = (e) => {
     e.preventDefault();
-    alert("Message payload received.");
+    alert("Message payload received successfully.");
     e.target.reset();
   };
 
@@ -48,7 +53,7 @@ export default function Home() {
               </div>
               <p className="text-sm text-secondary mb-6">Fetch the resume format matching your specific hiring criteria.</p>
               <div className="space-y-3 font-mono text-sm">
-                <button onClick={() => handleDownload('Backend_Java')} className="w-full text-left px-4 py-3 bg-slate-800 hover:bg-accent hover:text-primary transition-colors rounded border border-slate-700">Backend / Java Engineer</button>
+                <button onClick={() => handleDownload('Full_Stack')} className="w-full text-left px-4 py-3 bg-slate-800 hover:bg-accent hover:text-primary transition-colors rounded border border-slate-700">Full Stack Software Engineer</button>
                 <button onClick={() => handleDownload('Machine_Learning')} className="w-full text-left px-4 py-3 bg-slate-800 hover:bg-accent hover:text-primary transition-colors rounded border border-slate-700">Machine Learning Engineer</button>
                 <button onClick={() => handleDownload('Data_Science')} className="w-full text-left px-4 py-3 bg-slate-800 hover:bg-accent hover:text-primary transition-colors rounded border border-slate-700">Data Scientist</button>
               </div>
@@ -61,12 +66,13 @@ export default function Home() {
       <nav className="fixed w-full bg-primary/90 backdrop-blur-md z-50 border-b border-slate-800">
         <div className="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
           <Link to="/" className="flex items-center gap-2 text-sm font-mono text-secondary hover:text-accent transition-colors">
-            <ArrowLeft size={16} /> Re-initialize Context
+            <ArrowLeft size={16} /> Change Role Context
           </Link>
           <div className="hidden md:flex space-x-8 text-sm font-medium text-secondary">
-            <a href="#about" className="hover:text-accent transition-colors">Overview</a>
-            <a href="#experience" className="hover:text-accent transition-colors">Experience</a>
-            <a href="#projects" className="hover:text-accent transition-colors">Deployments</a>
+            <button onClick={() => scrollToSection('about')} className="hover:text-accent transition-colors">Overview</button>
+            <button onClick={() => scrollToSection('experience')} className="hover:text-accent transition-colors">Experience</button>
+            <button onClick={() => scrollToSection('projects')} className="hover:text-accent transition-colors">Deployments</button>
+            <button onClick={() => scrollToSection('contact')} className="hover:text-accent transition-colors">Contact</button>
           </div>
         </div>
       </nav>
@@ -82,9 +88,9 @@ export default function Home() {
             <button onClick={() => setResumeModalOpen(true)} className="flex items-center gap-2 bg-accent text-primary px-8 py-3 rounded text-sm font-bold hover:bg-white transition-colors">
               <Download size={16} /> Fetch Resume
             </button>
-            <a href="#projects" className="border border-slate-700 text-white px-8 py-3 rounded text-sm font-bold hover:bg-slate-800 transition-colors">
+            <button onClick={() => scrollToSection('projects')} className="border border-slate-700 text-white px-8 py-3 rounded text-sm font-bold hover:bg-slate-800 transition-colors">
               View Architecture
-            </a>
+            </button>
           </div>
         </motion.div>
       </section>
