@@ -24,14 +24,13 @@ export default function Home() {
     }
   };
 
-  const handleDownload = ({currentRole}) => {
+  const handleDownload = () => {
     // Native HTML5 download trigger
     var fileName = "";
-    alert(currentRoleKey);
-    if (currentRole == "fullstack"){
+    if (currentRoleKey == "fullstack"){
       fileName = "java-fullstack-resume.pdf";
     }
-    else if (currentRole == "ml"){
+    else if (currentRoleKey == "ml"){
       fileName = "ml-resume.pdf";
     }
     else{
@@ -111,7 +110,7 @@ export default function Home() {
             {profile.title}
           </h1>
           <div className="flex justify-center gap-4">
-            <button onClick={() => handleDownload(currentRoleKey) } className="flex items-center gap-2 bg-accent text-primary px-8 py-3 rounded text-sm font-bold hover:bg-white transition-colors">
+            <button onClick={() => handleDownload() } className="flex items-center gap-2 bg-accent text-primary px-8 py-3 rounded text-sm font-bold hover:bg-white transition-colors">
               <Download size={16} /> Download Resume
             </button>
             <button onClick={() => scrollToSection('projects')} className="border border-slate-700 text-white px-8 py-3 rounded text-sm font-bold hover:bg-slate-800 transition-colors">
