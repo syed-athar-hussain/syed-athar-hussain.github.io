@@ -210,12 +210,20 @@ export default function App() {
           <Route path="/" element={null} />
           <Route path="*" element={
             <footer className="border-t border-slate-800 py-8 text-center text-secondary font-mono text-sm flex flex-col items-center">
-              <div className="flex space-x-6 mb-4">
-                <Code size={20} className="hover:text-accent cursor-pointer transition-colors" />
-                <User size={20} className="hover:text-accent cursor-pointer transition-colors" />
-                <Mail size={20} className="hover:text-accent cursor-pointer transition-colors" />
+              <div className="flex space-x-8 mb-4">
+                <a href="https://github.com/yourgithub" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
+                  <Github size={20} /> GitHub
+                </a>
+                <a href="https://linkedin.com/in/yourlinkedin" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
+                  <Linkedin size={20} /> LinkedIn
+                </a>
+                <a href="mailto:johndoe@example.com" className="flex items-center gap-2 hover:text-accent transition-colors">
+                  <Mail size={20} /> Email
+                </a>
+                <span className="flex items-center gap-2 cursor-default text-slate-400">
+                  <MapPin size={20} /> Dublin, Ireland
+                </span>
               </div>
-              <p>© 2026 Engineered with React & Tailwind.</p>
             </footer>
           } />
         </Routes>

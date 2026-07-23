@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useParams, Link } from 'react-router-dom';
-import { Briefcase, ChevronRight, Download, ArrowLeft, X } from 'lucide-react';
-import { roleData, education, projects } from './data';
+import { Briefcase, ChevronRight, Download, X } from 'lucide-react';
+import { roleData, education, projects, profile as globalProfile } from './data';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -17,7 +17,6 @@ export default function Home() {
   const profile = roleData[currentRoleKey];
   const filteredProjects = projects.filter(p => p.roles.includes(currentRoleKey));
 
-  // Native DOM Scrolling avoids React Router Hash conflicts
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -25,14 +24,30 @@ export default function Home() {
     }
   };
 
-  const handleDownload = (selectedRoleFormat) => {
-    alert(`Initiating download for: ${selectedRoleFormat} Resume`);
+  const handleDownload = (fileName) => {
+    // Native HTML5 download trigger
+    const link = document.createElement('a');
+    link.href = `/resumes/${fileName}`;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
     setResumeModalOpen(false);
   };
 
   const handleContactSubmit = (e) => {
     e.preventDefault();
-    alert("Message payload received successfully.");
+    const formData = new FormData(e.target);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const message = formData.get('message');
+    
+    // Construct mailto link with encoded parameters
+    const subject = encodeURIComponent(`Contact Inquiry from ${name}`);
+    const body = encodeURIComponent(`${message}\n\nSender Email: ${email}`);
+    
+    // Redirect to mail client
+    window.location.href = `mailto:johndoe@example.com?subject=${subject}&body=${body}`;
     e.target.reset();
   };
 
@@ -53,9 +68,9 @@ export default function Home() {
               </div>
               <p className="text-sm text-secondary mb-6">Fetch the resume format matching your specific hiring criteria.</p>
               <div className="space-y-3 font-mono text-sm">
-                <button onClick={() => handleDownload('Full_Stack')} className="w-full text-left px-4 py-3 bg-slate-800 hover:bg-accent hover:text-primary transition-colors rounded border border-slate-700">Full Stack Software Engineer</button>
-                <button onClick={() => handleDownload('Machine_Learning')} className="w-full text-left px-4 py-3 bg-slate-800 hover:bg-accent hover:text-primary transition-colors rounded border border-slate-700">Machine Learning Engineer</button>
-                <button onClick={() => handleDownload('Data_Science')} className="w-full text-left px-4 py-3 bg-slate-800 hover:bg-accent hover:text-primary transition-colors rounded border border-slate-700">Data Scientist</button>
+                <button onClick={() => handleDownload('java-fullstack-resume.pdf')} className="w-full text-left px-4 py-3 bg-slate-800 hover:bg-accent hover:text-primary transition-colors rounded border border-slate-700">Full Stack Software Engineer</button>
+                <button onClick={() => handleDownload('ml-resume.pdf')} className="w-full text-left px-4 py-3 bg-slate-800 hover:bg-accent hover:text-primary transition-colors rounded border border-slate-700">Machine Learning Engineer</button>
+                <button onClick={() => handleDownload('data-scientist-resume.pdf')} className="w-full text-left px-4 py-3 bg-slate-800 hover:bg-accent hover:text-primary transition-colors rounded border border-slate-700">Data Scientist</button>
               </div>
             </motion.div>
           </div>
@@ -65,8 +80,8 @@ export default function Home() {
       {/* Navigation */}
       <nav className="fixed w-full bg-primary/90 backdrop-blur-md z-50 border-b border-slate-800">
         <div className="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
-          <Link to="/" className="flex items-center gap-2 text-sm font-mono text-secondary hover:text-accent transition-colors">
-            <ArrowLeft size={16} /> Change Role Context
+          <Link to={`/portfolio/${currentRoleKey}`} className="flex items-center gap-2 text-xl font-extrabold text-white hover:text-accent transition-colors">
+            {globalProfile.name}.
           </Link>
           <div className="hidden md:flex space-x-8 text-sm font-medium text-secondary">
             <button onClick={() => scrollToSection('about')} className="hover:text-accent transition-colors">Overview</button>
@@ -86,10 +101,10 @@ export default function Home() {
           </h1>
           <div className="flex justify-center gap-4">
             <button onClick={() => setResumeModalOpen(true)} className="flex items-center gap-2 bg-accent text-primary px-8 py-3 rounded text-sm font-bold hover:bg-white transition-colors">
-              <Download size={16} /> Fetch Resume
+              <Download size={16} /> Download Resume
             </button>
             <button onClick={() => scrollToSection('projects')} className="border border-slate-700 text-white px-8 py-3 rounded text-sm font-bold hover:bg-slate-800 transition-colors">
-              View Architecture
+              View Projects
             </button>
           </div>
         </motion.div>
@@ -199,15 +214,15 @@ export default function Home() {
           <form onSubmit={handleContactSubmit} className="space-y-6">
             <div>
               <label htmlFor="name" className="block text-sm font-mono text-secondary mb-2">Name</label>
-              <input type="text" id="name" required className="w-full bg-slate-800 border border-slate-700 rounded p-3 text-white focus:outline-none focus:border-accent transition-colors" />
+              <input type="text" name="name" id="name" required className="w-full bg-slate-800 border border-slate-700 rounded p-3 text-white focus:outline-none focus:border-accent transition-colors" />
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-mono text-secondary mb-2">Email</label>
-              <input type="email" id="email" required className="w-full bg-slate-800 border border-slate-700 rounded p-3 text-white focus:outline-none focus:border-accent transition-colors" />
+              <input type="email" name="email" id="email" required className="w-full bg-slate-800 border border-slate-700 rounded p-3 text-white focus:outline-none focus:border-accent transition-colors" />
             </div>
             <div>
               <label htmlFor="message" className="block text-sm font-mono text-secondary mb-2">Message Payload</label>
-              <textarea id="message" required rows="4" className="w-full bg-slate-800 border border-slate-700 rounded p-3 text-white focus:outline-none focus:border-accent transition-colors"></textarea>
+              <textarea name="message" id="message" required rows="4" className="w-full bg-slate-800 border border-slate-700 rounded p-3 text-white focus:outline-none focus:border-accent transition-colors"></textarea>
             </div>
             <button type="submit" className="w-full bg-accent text-primary font-bold py-3 rounded hover:bg-white transition-colors">
               Transmit
