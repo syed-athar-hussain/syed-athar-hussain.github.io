@@ -27,7 +27,7 @@ export default function Home() {
   const handleDownload = ({currentRole}) => {
     // Native HTML5 download trigger
     var fileName = "";
-    alert(roleData[role]);
+    alert(currentRoleKey);
     if (currentRole == "fullstack"){
       fileName = "java-fullstack-resume.pdf";
     }
