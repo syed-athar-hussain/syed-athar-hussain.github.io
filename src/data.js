@@ -1,3 +1,6 @@
+export const profile = {
+  name: "John Doe" // Replace with your actual name
+};
 export const education = [
   {
     degree: "MSc in Computer Science",
