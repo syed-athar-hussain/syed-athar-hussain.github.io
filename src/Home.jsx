@@ -37,7 +37,7 @@ export default function Home() {
       fileName = "data-scientist-resume.pdf";
     }
     const link = document.createElement('a');
-    link.href = `/resumes/${fileName}`;
+    link.href = `${import.meta.env.BASE_URL}/resumes/${fileName}`;
     link.download = fileName;
     document.body.appendChild(link);
     link.click();
