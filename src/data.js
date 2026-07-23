@@ -1,5 +1,5 @@
 export const profile = {
-  name: "John Doe" // Replace with your actual name
+  name: "Syed Athar Hussain"
 };
 export const education = [
   {
@@ -21,8 +21,8 @@ export const roleData = {
     title: "Full-Stack Software Engineering.",
     about: "Full-stack software engineer with 4 years of experience building responsive React applications and distributed Java Spring Boot services. Experienced in converting UX wireframes into maintainable UI components, managing asynchronous client state, and designing RESTful APIs backed by PostgreSQL and MySQL. Focused on secure, high-throughput systems deployed via Docker and Kubernetes.",
     skills: [
-      "Frontend: React, TypeScript, HTML/CSS, Webpack, Vite, WebSockets",
-      "Backend: Java 8/17, Spring Boot, JPA, Hibernate, RESTful APIs",
+      "Frontend: React, TypeScript (academic), HTML/CSS, Webpack, Vite, WebSockets",
+      "Backend: Java, Spring Boot, JPA, Hibernate, RESTful APIs",
       "Database & DevOps: PostgreSQL, MySQL, Redis, Docker, Kubernetes, CI/CD",
       "Architecture: DDD, Event-Driven, OWASP, JWT Auth"
     ],
@@ -52,10 +52,10 @@ export const roleData = {
   },
   ml: {
     title: "Machine Learning Operations.",
-    about: "Machine Learning Engineer focused on deploying deterministic, low-latency models to production. I specialize in PyTorch, Hugging Face, and LLM orchestration (RAG/MCP). I bridge the gap between experimental notebooks and production servers by focusing on model quantization, memory-mapped data pipelines, and eliminating third-party API dependencies.",
+    about: "Software Engineer with over 4 years of experience focused on deploying deterministic, low-latency models to production. I specialize in PyTorch, Hugging Face, and LLM orchestration (RAG/MCP). I bridge the gap between experimental notebooks and production servers by focusing on model quantization, memory-mapped data pipelines, and eliminating third-party API dependencies.",
     skills: [
       "Python, PyTorch, Hugging Face Transformers",
-      "LangGraph, LangChain, FAISS, Model Context Protocol (MCP)",
+      "LangGraph, LangChain, FAISS, MCP, RAG, Agentic development",
       "XGBoost, scikit-learn, SHAP, LoRA fine-tuning",
       "MLflow, AWS SageMaker, Docker, Kubernetes"
     ],
@@ -76,16 +76,16 @@ export const roleData = {
         company: "Avant-Grade Technologies, Kolkata",
         time: "Mar 2019 – Sep 2021",
         desc: [
-          "Integrated Python-based machine learning scripts for user segmentation directly into the core Java application workflow.",
-          "Automated anomaly detection pipelines using historical PostgreSQL data.",
-          "Packaged machine learning dependencies inside Docker containers to eliminate environment mismatch issues across staging and production."
+          "Built and deployed a full-stack web application from scratch using React, Webpack, and Java/J2EE.",
+          "Designed RESTful web services using Core Java and Spring Boot, mapping business logic to MySQL schemas via JPA and Hibernate.",
+          "Configured production monitoring, alerting, and centralized logging systems to assist in backend debugging and capacity planning."
         ]
       }
     ]
   },
   data: {
     title: "Distributed Data Systems.",
-    about: "Data Scientist and Data Engineer specializing in high-throughput ETL pipelines, statistical modeling, and data observability. I focus on processing continuous streams via Kafka and Airflow, performing Exploratory Data Analysis (EDA), handling severe class imbalances in classification tasks, and building interactive BI dashboards.",
+    about: "Software Engineer with over 4 years of experience focusing on core software developent and Data Engineering specialising in high-throughput ETL pipelines, statistical modeling, and data observability. I focus on processing continuous streams via Kafka and Airflow, performing EDA, handling severe class imbalances in classification tasks, and building interactive BI dashboards.",
     skills: [
       "Python, Pandas, NumPy, Scikit-Learn, Plotly",
       "Apache Airflow, Apache Spark, Kafka",
@@ -98,8 +98,8 @@ export const roleData = {
         company: "Fujitsu Consulting India, Pune",
         time: "Feb 2022 – Aug 2024",
         desc: [
-          "Architected real-time data ingestion pipelines for 120 streaming assets using Python ThreadPoolExecutor and Apache Kafka.",
-          "Scheduled and orchestrated daily and historical data backfill Directed Acyclic Graphs (DAGs) using Apache Airflow.",
+          "Built real-time data ingestion pipelines for 120 streaming assets using Python ThreadPoolExecutor and Apache Kafka.",
+          "Scheduled and orchestrated daily and historical data backfill DAGs using Apache Airflow.",
           "Calculated complex technical indicators (RSI, MACD) across millions of rows using Apache Spark.",
           "Designed polyglot persistence layers, routing relational metadata to Azure SQL and high-frequency interval data to InfluxDB."
         ]
@@ -109,9 +109,9 @@ export const roleData = {
         company: "Avant-Grade Technologies, Kolkata",
         time: "Mar 2019 – Sep 2021",
         desc: [
-          "Extracted, cleaned, and normalized production datasets using Pandas to feed into downstream analytics dashboards.",
-          "Built automated SQL aggregation scripts to monitor daily capacity planning and system health.",
-          "Visualized user demographics and system metrics to assist product managers in feature planning."
+          "Built and deployed a full-stack web application from scratch using React, Webpack, and Java/J2EE.",
+          "Designed RESTful web services using Core Java and Spring Boot, mapping business logic to MySQL schemas via JPA and Hibernate.",
+          "Configured production monitoring, alerting, and centralized logging systems to assist in backend debugging and capacity planning."
         ]
       }
     ]

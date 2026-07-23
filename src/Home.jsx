@@ -24,8 +24,18 @@ export default function Home() {
     }
   };
 
-  const handleDownload = (fileName) => {
+  const handleDownload = ({currentRole}) => {
     // Native HTML5 download trigger
+    fileName = "";
+    if (currentRole == "fullstack"){
+      fileName = "java-fullstack-resume.pdf";
+    }
+    else if (currentRole == "ml"){
+      fileName = "ml-resume.pdf";
+    }
+    else{
+      fileName = "data-scientist-resume.pdf";
+    }
     const link = document.createElement('a');
     link.href = `/resumes/${fileName}`;
     link.download = fileName;
@@ -95,12 +105,12 @@ export default function Home() {
       {/* Hero */}
       <section className="min-h-screen flex items-center justify-center px-6 pt-20">
         <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-4xl text-center">
-          <p className="text-accent font-mono mb-4 tracking-wide">System initialized. I specialize in:</p>
+          <p className="text-accent font-mono mb-4 tracking-wide">Hello, I am Syed Athar Hussain and I specialised in:</p>
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-8">
             {profile.title}
           </h1>
           <div className="flex justify-center gap-4">
-            <button onClick={() => setResumeModalOpen(true)} className="flex items-center gap-2 bg-accent text-primary px-8 py-3 rounded text-sm font-bold hover:bg-white transition-colors">
+            <button onClick={() => handleDownload(currentRoleKey) } className="flex items-center gap-2 bg-accent text-primary px-8 py-3 rounded text-sm font-bold hover:bg-white transition-colors">
               <Download size={16} /> Download Resume
             </button>
             <button onClick={() => scrollToSection('projects')} className="border border-slate-700 text-white px-8 py-3 rounded text-sm font-bold hover:bg-slate-800 transition-colors">
